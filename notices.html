@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SMS / WhatsApp Notices</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 700px;
+      margin-top: 4rem;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+
+    .btn-custom {
+      background-color: #3a86ff;
+      color: white;
+    }
+
+    .btn-custom:hover {
+      background-color: #265ed7;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="btn btn-link ms-4 mt-3 d-inline-block">&larr; Back to Home</a>
+  <div class="container">
+    <h2 class="mb-4 text-center">📢 Send Notice</h2>
+
+    <form id="noticeForm">
+      <div class="mb-3">
+        <label for="audience" class="form-label">Select Recipient Group</label>
+        <select id="audience" class="form-select" required>
+          <option value="">-- Choose Group --</option>
+          <option>All Parents</option>
+          <option>Class 1A</option>
+          <option>Class 5B</option>
+          <option>Fee Defaulters</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" class="form-control" rows="4" placeholder="Enter your announcement..." required></textarea>
+      </div>
+
+      <div class="mb-3 d-flex gap-3">
+        <button type="button" class="btn btn-success" onclick="sendNotice('WhatsApp')">Send via WhatsApp</button>
+        <button type="button" class="btn btn-primary" onclick="sendNotice('SMS')">Send via SMS</button>
+      </div>
+    </form>
+
+    <div id="confirmation" class="alert alert-success mt-4 d-none" role="alert">
+      ✅ Notice sent successfully!
+    </div>
+  </div>
+
+  <script>
+    function sendNotice(type) {
+      const group = document.getElementById('audience').value;
+      const message = document.getElementById('message').value;
+
+      if (!group || !message) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      // Fake confirmation
+      document.getElementById('confirmation').classList.remove('d-none');
+      document.getElementById('confirmation').textContent = `✅ Notice sent via ${type}!`;
+    }
+  </script>
+
+</body>
+</html>
