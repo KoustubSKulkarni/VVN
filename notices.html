@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMS / WhatsApp Notices</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -12,11 +12,13 @@
 
     .container {
       max-width: 700px;
-      margin-top: 4rem;
+      margin: 0 auto;
+      padding: 2rem 1rem;
       background: white;
-      padding: 2rem 2.5rem;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
     }
 
     .btn-custom {
@@ -27,12 +29,18 @@
     .btn-custom:hover {
       background-color: #265ed7;
     }
+
+    @media (max-width: 576px) {
+      .container {
+        padding: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <a href="index.html" class="btn btn-link ms-4 mt-3 d-inline-block">&larr; Back to Home</a>
   <div class="container">
+    <a href="index.html" class="btn btn-link mb-3">&larr; Back to Home</a>
     <h2 class="mb-4 text-center">📢 Send Notice</h2>
 
     <form id="noticeForm">
@@ -52,9 +60,9 @@
         <textarea id="message" class="form-control" rows="4" placeholder="Enter your announcement..." required></textarea>
       </div>
 
-      <div class="mb-3 d-flex gap-3">
-        <button type="button" class="btn btn-success" onclick="sendNotice('WhatsApp')">Send via WhatsApp</button>
-        <button type="button" class="btn btn-primary" onclick="sendNotice('SMS')">Send via SMS</button>
+      <div class="mb-3 d-flex flex-column flex-sm-row gap-3">
+        <button type="button" class="btn btn-success w-100" onclick="sendNotice('WhatsApp')">Send via WhatsApp</button>
+        <button type="button" class="btn btn-primary w-100" onclick="sendNotice('SMS')">Send via SMS</button>
       </div>
     </form>
 
@@ -73,7 +81,6 @@
         return;
       }
 
-      // Fake confirmation
       document.getElementById('confirmation').classList.remove('d-none');
       document.getElementById('confirmation').textContent = `✅ Notice sent via ${type}!`;
     }

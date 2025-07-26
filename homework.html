@@ -11,7 +11,7 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 100%;
       margin-top: 4rem;
       background: white;
       padding: 2rem;
@@ -50,39 +50,77 @@
     .submit-btn:hover {
       background-color: #265ed7;
     }
+
+    @media (max-width: 576px) {
+      .container {
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
   <a href="index.html" class="btn btn-link mb-3 ms-3 mt-3 d-inline-block">&larr; Back to Home</a>
 
   <div class="container">
-    
     <h2 class="mb-4 text-center">📚 Homework Management</h2>
 
     <div class="d-flex justify-content-end mb-3">
       <button class="add-btn" data-bs-toggle="modal" data-bs-target="#homeworkModal">+ Add Homework</button>
     </div>
 
-    <table class="table table-bordered table-hover">
-      <thead class="table-light">
-        <tr>
-          <th>Class</th>
-          <th>Subject</th>
-          <th>Homework</th>
-          <th>Due Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr data-class="5A" data-subject="Math" data-homework="Complete Exercise 3.2" data-duedate="2025-07-24">
-          <td><span class="badge bg-warning text-dark">5A</span></td>
-          <td>Math</td>
-          <td>Complete Exercise 3.2</td>
-          <td>2025-07-24</td>
-          <td><button class="btn btn-sm btn-outline-primary edit-btn">Edit</button></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Homework</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-class="5A" data-subject="Math" data-homework="Complete Exercise 3.2" data-duedate="2025-07-24">
+            <td><span class="badge bg-warning text-dark">5A</span></td>
+            <td>Math</td>
+            <td>Complete Exercise 3.2</td>
+            <td>2025-07-24</td>
+            <td><button class="btn btn-sm btn-outline-primary edit-btn">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="mt-5">📈 Homework Completion Tracker</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered mt-3">
+        <thead class="table-light">
+          <tr>
+            <th>Student Name</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Homework</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aarav Sharma</td>
+            <td>5A</td>
+            <td>Math</td>
+            <td>Complete Exercise 3.2</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <tr>
+            <td>Diya Patel</td>
+            <td>5A</td>
+            <td>Math</td>
+            <td>Complete Exercise 3.2</td>
+            <td><span class="badge bg-warning text-dark">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Modal -->
@@ -194,11 +232,10 @@
       document.getElementById("fileNameDisplay").textContent = "📎 " + fileName;
     });
   </script>
-
-</body>
   <script>
     document.getElementById("homeworkInput").addEventListener("input", function () {
       document.getElementById("previewBox").textContent = this.value;
     });
   </script>
+</body>
 </html>
